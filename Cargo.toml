@@ -1,0 +1,36 @@
+[package]
+name = "io-starttls"
+description = "I/O-free coroutine to upgrade any plain stream to a secure one"
+version = "1.0.0"
+authors = ["soywod <clement.douin@posteo.net>"]
+edition = "2021"
+license = "MIT"
+categories = ["api-bindings"]
+keywords = ["io-free", "coroutine", "starttls", "stream", "imap"]
+homepage = "https://pimalaya.org"
+documentation = "https://docs.rs/starttls/latest/starttls"
+repository = "https://github.com/pimalaya/io-starttls"
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+
+[features]
+default = []
+imap = []
+
+[dev-dependencies]
+env_logger = "0.11"
+io-stream = { version = "1", default-features = false, features = ["std", "tokio"] }
+rustls = "0.23"
+rustls-platform-verifier = "0.5"
+tokio = { version = "1", features = ["full"] }
+tokio-native-tls = "0.3"
+
+[dependencies]
+io-stream = { version = "1", default-features = false }
+log = "0.4"
+memchr = "2.7"
+
+[patch.crates-io]
+io-stream.git = "https://github.com/pimalaya/io-stream"
